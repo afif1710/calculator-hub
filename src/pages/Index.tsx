@@ -5,6 +5,8 @@ import { categories, getAllCalculators } from "@/data/calculators";
 import { SearchBar } from "@/components/SearchBar";
 import { CalculatorModal } from "@/components/CalculatorModal";
 import { ThemeSwitcher } from "@/components/ThemeSwitcher";
+import { Star, Clock } from "lucide-react";
+import { useUserPreferences } from "@/hooks/useUserPreferences";
 
 const CATEGORY_IMAGES: Record<string, string> = {
   math: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=600&q=80", 
@@ -103,7 +105,18 @@ const Index = () => {
     categoryId: string;
   } | null>(null);
 
+  const { favorites, recentlyViewed } = useUserPreferences();
+
   const allCalculators = useMemo(() => getAllCalculators(), []);
+
+  // Compute matched items for favorites/recent
+  const favoriteCalculators = useMemo(() => {
+    return favorites.map(id => allCalculators.find(c => c.id === id)).filter(Boolean) as typeof allCalculators;
+  }, [favorites, allCalculators]);
+
+  const recentCalculators = useMemo(() => {
+    return recentlyViewed.map(id => allCalculators.find(c => c.id === id)).filter(Boolean) as typeof allCalculators;
+  }, [recentlyViewed, allCalculators]);
 
   useEffect(() => {
     const calcParam = searchParams.get("calc");
@@ -185,9 +198,57 @@ const Index = () => {
         <h2 className="font-serif text-[16px] leading-tight text-foreground/70 tracking-wide subtitle-font uppercase">Sophisticated Analyst Edition</h2>
       </header>
       <main className="px-4 relative z-10 flex flex-col gap-3 max-w-6xl mx-auto">
-        <div className="mb-2 bg-card/60 backdrop-blur-md p-1.5 rounded-xl shadow-sm border border-border/40">
+        <div className="mb-2 bg-card/60 backdrop-blur-md p-1.5 rounded-xl shadow-sm border border-border/40 relative z-50">
           <SearchBar onSelectCalculator={handleSelectCalculator} initialQuery={searchParams.get("search") || ""} />
         </div>
+
+        {/* User Preferences Rows */}
+        {(favoriteCalculators.length > 0 || recentCalculators.length > 0) && (
+          <div className="flex flex-col gap-4 mb-4">
+            {favoriteCalculators.length > 0 && (
+              <div>
+                <div className="flex items-center gap-2 mb-2 px-1">
+                  <Star className="w-4 h-4 text-yellow-500 fill-yellow-500" />
+                  <h3 className="font-serif text-sm font-semibold tracking-wide">Favorites</h3>
+                </div>
+                <div className="flex gap-3 overflow-x-auto pb-2 snap-x hide-scrollbar">
+                  {favoriteCalculators.map(calc => (
+                    <button
+                      key={calc.id}
+                      onClick={() => handleSelectCalculator(calc.categoryId, calc.id)}
+                      className="snap-start shrink-0 w-32 bg-card/80 backdrop-blur-sm border border-border/50 rounded-xl p-3 flex flex-col items-center justify-center gap-2 hover:border-primary/40 hover:bg-primary/5 transition-all shadow-sm"
+                    >
+                      <span className="font-serif text-xs font-bold text-center leading-tight truncate w-full">{calc.title}</span>
+                      <span className="text-[9px] uppercase tracking-wider text-muted-foreground">{calc.categoryTitle}</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {recentCalculators.length > 0 && (
+              <div>
+                 <div className="flex items-center gap-2 mb-2 px-1">
+                  <Clock className="w-4 h-4 text-primary" />
+                  <h3 className="font-serif text-sm font-semibold tracking-wide">Recently Viewed</h3>
+                </div>
+                <div className="flex gap-3 overflow-x-auto pb-2 snap-x hide-scrollbar">
+                  {recentCalculators.map(calc => (
+                    <button
+                      key={calc.id}
+                      onClick={() => handleSelectCalculator(calc.categoryId, calc.id)}
+                      className="snap-start shrink-0 w-32 bg-card/80 backdrop-blur-sm border border-border/50 rounded-xl p-3 flex flex-col items-center justify-center gap-2 hover:border-primary/40 hover:bg-primary/5 transition-all shadow-sm"
+                    >
+                      <span className="font-serif text-xs font-bold text-center leading-tight truncate w-full">{calc.title}</span>
+                      <span className="text-[9px] uppercase tracking-wider text-muted-foreground">{calc.categoryTitle}</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        )}
+
         <div className="relative w-full aspect-video rounded-[20px] overflow-hidden shadow-card group cursor-pointer" onClick={() => setExpandedCategory(mainCategory.id)}>
           <img src={CATEGORY_IMAGES[mainCategory.id] || CATEGORY_IMAGES.everyday} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt={mainCategory.title} />
           <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-black/20 to-transparent"></div>

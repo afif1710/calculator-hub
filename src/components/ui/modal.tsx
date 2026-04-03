@@ -9,6 +9,7 @@ interface ModalProps {
   children: React.ReactNode;
   maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | '2xl';
   showCloseButton?: boolean;
+  headerActions?: React.ReactNode;
 }
 
 const maxWidthClasses = {
@@ -26,6 +27,7 @@ export function Modal({
   children,
   maxWidth = '2xl',
   showCloseButton = true,
+  headerActions,
 }: ModalProps) {
   const panelRef = useRef<HTMLDivElement>(null);
   const previousActiveElement = useRef<Element | null>(null);
@@ -111,22 +113,25 @@ export function Modal({
               aria-labelledby={title ? 'modal-title' : undefined}
             >
               {/* Header */}
-              {(title || showCloseButton) && (
+              {(title || showCloseButton || headerActions) && (
                 <div className="flex items-center justify-between p-4 border-b border-border shrink-0">
                   {title && (
                     <h2 id="modal-title" className="text-xl font-semibold gradient-text">
                       {title}
                     </h2>
                   )}
-                  {showCloseButton && (
-                    <button
-                      onClick={onClose}
-                      className="p-2 rounded-lg hover:bg-secondary transition-colors ml-auto"
-                      aria-label="Close modal"
-                    >
-                      <X className="w-5 h-5" />
-                    </button>
-                  )}
+                  <div className="flex items-center gap-2 flex-shrink-0 ml-auto">
+                    {headerActions}
+                    {showCloseButton && (
+                      <button
+                        onClick={onClose}
+                        className="p-2 rounded-lg hover:bg-secondary transition-colors"
+                        aria-label="Close modal"
+                      >
+                        <X className="w-5 h-5" />
+                      </button>
+                    )}
+                  </div>
                 </div>
               )}
 

@@ -186,6 +186,10 @@ const calculatorComponents: Record<string, React.FC> = {
   expense_tracker: ExpenseTrackerCalculator,
 };
 
+import { useEffect } from 'react';
+import { Star } from 'lucide-react';
+import { useUserPreferences } from '@/hooks/useUserPreferences';
+
 interface CalculatorModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -195,9 +199,35 @@ interface CalculatorModalProps {
 
 export function CalculatorModal({ isOpen, onClose, calculatorId, calculatorTitle }: CalculatorModalProps) {
   const CalculatorComponent = calculatorId ? calculatorComponents[calculatorId] : null;
+  const { toggleFavorite, isFavorite, addRecentlyViewed } = useUserPreferences();
+
+  useEffect(() => {
+    if (isOpen && calculatorId) {
+      addRecentlyViewed(calculatorId);
+    }
+  }, [isOpen, calculatorId, addRecentlyViewed]);
+
+  const favorite = calculatorId ? isFavorite(calculatorId) : false;
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose} title={calculatorTitle}>
+    <Modal 
+      isOpen={isOpen} 
+      onClose={onClose} 
+      title={calculatorTitle}
+      headerActions={
+        calculatorId && (
+          <button
+            onClick={() => toggleFavorite(calculatorId)}
+            className="p-2 rounded-lg hover:bg-secondary/80 transition-colors group focus:outline-none"
+            aria-label={favorite ? "Remove from favorites" : "Add to favorites"}
+          >
+            <Star 
+              className={`w-5 h-5 transition-all ${favorite ? 'fill-yellow-400 text-yellow-400' : 'text-muted-foreground group-hover:text-foreground'}`} 
+            />
+          </button>
+        )
+      }
+    >
       {CalculatorComponent ? (
         <CalculatorComponent />
       ) : (
