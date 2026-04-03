@@ -62,7 +62,6 @@ export const categories: CategoryMeta[] = [
       { id: 'cagr', title: 'CAGR Calculator', description: 'Compound annual growth rate', keywords: ['cagr', 'growth', 'annual', 'return', 'investment'], complexity: 'simple' },
       { id: 'inflation', title: 'Inflation Calculator', description: 'Future & present value', keywords: ['inflation', 'purchasing', 'power', 'future', 'value'], complexity: 'simple' },
       { id: 'roi', title: 'ROI Calculator', description: 'Return on investment analysis', keywords: ['roi', 'return', 'investment', 'profit'], complexity: 'simple' },
-      { id: 'currency', title: 'Currency Converter', description: 'Convert between currencies', keywords: ['currency', 'exchange', 'forex', 'convert'], complexity: 'simple' },
     ]
   },
   {

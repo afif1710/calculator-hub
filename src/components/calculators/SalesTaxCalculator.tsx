@@ -62,7 +62,7 @@ export function SalesTaxCalculator() {
             <input
               value={amount}
               onChange={(e) => setAmount(e.target.value)}
-              className="input-calc pl-8"
+              className="input-calc pl-10"
               type="number"
               min="0"
               step="0.01"
@@ -77,7 +77,7 @@ export function SalesTaxCalculator() {
             <input
               value={quantity}
               onChange={(e) => setQuantity(e.target.value)}
-              className="input-calc pl-8"
+              className="input-calc pl-10"
               type="number"
               min="1"
             />
@@ -123,7 +123,7 @@ export function SalesTaxCalculator() {
             </div>
           </div>
           
-          {quantity > 1 && (
+          {Number(quantity) > 1 && (
             <div className="mt-3 text-sm text-muted-foreground flex items-center gap-1.5">
               <CalcIcon className="w-4 h-4" />
               Effective cost per item: <strong className="text-foreground">${result.effectivePerItem.toFixed(2)}</strong>

@@ -37,7 +37,7 @@ export function BudgetPlannerCalculator() {
               <input
                 value={income}
                 onChange={(e) => setIncome(e.target.value)}
-                className="input-calc pl-9 text-lg font-medium text-primary"
+                className="input-calc pl-10 text-lg font-medium text-primary"
                 type="number"
                 min="0"
               />
@@ -51,7 +51,7 @@ export function BudgetPlannerCalculator() {
               <input
                 value={fixedExpenses}
                 onChange={(e) => setFixedExpenses(e.target.value)}
-                className="input-calc pl-9"
+                className="input-calc pl-10"
                 type="number"
                 min="0"
               />
@@ -65,7 +65,7 @@ export function BudgetPlannerCalculator() {
               <input
                 value={variableExpenses}
                 onChange={(e) => setVariableExpenses(e.target.value)}
-                className="input-calc pl-9"
+                className="input-calc pl-10"
                 type="number"
                 min="0"
               />
@@ -79,7 +79,7 @@ export function BudgetPlannerCalculator() {
               <input
                 value={savingsGoal}
                 onChange={(e) => setSavingsGoal(e.target.value)}
-                className="input-calc pl-9"
+                className="input-calc pl-10"
                 type="number"
                 min="0"
               />
@@ -96,7 +96,7 @@ export function BudgetPlannerCalculator() {
             <div className="space-y-3">
               <div className="flex justify-between items-center text-sm">
                 <span className="text-muted-foreground">Total Income</span>
-                <span className="font-medium">${income.toFixed(2)}</span>
+                <span className="font-medium">${Number(income).toFixed(2)}</span>
               </div>
               <div className="flex justify-between items-center text-sm">
                 <span className="text-muted-foreground">Total Expenses</span>
@@ -129,8 +129,8 @@ export function BudgetPlannerCalculator() {
                     {result.isOverspent 
                       ? `You are spending $${Math.abs(result.balance).toFixed(2)} more than you make.` 
                       : result.goalMet 
-                        ? `You have enough balance to comfortably save $${savingsGoal}.` 
-                        : `You are short by $${(savingsGoal - result.balance).toFixed(2)} to reach your savings target.`}
+                        ? `You have enough balance to comfortably save $${Number(savingsGoal).toFixed(2)}.` 
+                        : `You are short by $${(Number(savingsGoal) - result.balance).toFixed(2)} to reach your savings target.`}
                   </p>
                </div>
              </div>

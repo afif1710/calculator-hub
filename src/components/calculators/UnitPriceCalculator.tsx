@@ -2,8 +2,8 @@ import { useState, useMemo } from 'react';
 import { ShoppingCart, Scale, ArrowRight, DollarSign } from 'lucide-react';
 
 export function UnitPriceCalculator() {
-  const [item1Params, setItem1Params] = useState({ price: 10, quantity: 500, unit: 'g' });
-  const [item2Params, setItem2Params] = useState({ price: 18, quantity: 1000, unit: 'g' });
+  const [item1Params, setItem1Params] = useState({ price: '10', quantity: '500', unit: 'g' });
+  const [item2Params, setItem2Params] = useState({ price: '18', quantity: '1000', unit: 'g' });
   const [compareMode, setCompareMode] = useState(true);
 
   const units = ['g', 'kg', 'ml', 'L', 'oz', 'lb', 'pieces'];
@@ -62,11 +62,11 @@ export function UnitPriceCalculator() {
             <div>
               <label className="text-xs text-muted-foreground mb-1 block">Price</label>
               <div className="relative">
-                <DollarSign className="absolute left-2.5 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
                 <input
                   value={item1Params.price}
-                  onChange={(e) => setItem1Params({ ...item1Params, price: Number(e.target.value) })}
-                  className="input-calc pl-8 py-2 text-sm"
+                  onChange={(e) => setItem1Params({ ...item1Params, price: e.target.value })}
+                  className="input-calc pl-10 py-2 text-sm"
                   type="number"
                   min="0"
                   step="0.01"
@@ -79,7 +79,7 @@ export function UnitPriceCalculator() {
                 <label className="text-xs text-muted-foreground mb-1 block">Quantity</label>
                 <input
                   value={item1Params.quantity}
-                  onChange={(e) => setItem1Params({ ...item1Params, quantity: Number(e.target.value) })}
+                  onChange={(e) => setItem1Params({ ...item1Params, quantity: e.target.value })}
                   className="input-calc py-2 text-sm"
                   type="number"
                   min="0"
@@ -116,11 +116,11 @@ export function UnitPriceCalculator() {
               <div>
                 <label className="text-xs text-muted-foreground mb-1 block">Price</label>
                 <div className="relative">
-                  <DollarSign className="absolute left-2.5 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                  <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
                   <input
                     value={item2Params.price}
-                    onChange={(e) => setItem2Params({ ...item2Params, price: Number(e.target.value) })}
-                    className="input-calc pl-8 py-2 text-sm"
+                    onChange={(e) => setItem2Params({ ...item2Params, price: e.target.value })}
+                    className="input-calc pl-10 py-2 text-sm"
                     type="number"
                     min="0"
                     step="0.01"
@@ -133,7 +133,7 @@ export function UnitPriceCalculator() {
                   <label className="text-xs text-muted-foreground mb-1 block">Quantity</label>
                   <input
                     value={item2Params.quantity}
-                    onChange={(e) => setItem2Params({ ...item2Params, quantity: Number(e.target.value) })}
+                    onChange={(e) => setItem2Params({ ...item2Params, quantity: e.target.value })}
                     className="input-calc py-2 text-sm"
                     type="number"
                     min="0"

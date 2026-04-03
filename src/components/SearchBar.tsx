@@ -68,7 +68,7 @@ export function SearchBar({ onSelectCalculator, initialQuery = '' }: SearchBarPr
             if (!isOpen) setIsOpen(true);
           }}
           onFocus={() => setIsOpen(true)}
-          placeholder="Search 89+ calculators..."
+          placeholder="Search 85+ calculators & converters..."
           className="flex-1 bg-transparent border-none outline-none text-foreground placeholder:text-muted-foreground text-base"
           autoComplete="off"
         />

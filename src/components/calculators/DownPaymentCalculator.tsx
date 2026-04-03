@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react';
-import { Home, Percent, DollarSign, PieChart } from 'lucide-react';
+import { Home, Percent, DollarSign, PieChart, CheckCircle2 } from 'lucide-react';
 
 export function DownPaymentCalculator() {
   const [homePrice, setHomePrice] = useState('300000');
@@ -9,35 +9,42 @@ export function DownPaymentCalculator() {
 
   // Handle cross calculations instantly
   const handlePriceChange = (val: string) => {
+    setHomePrice(val);
     const price = Math.max(0, Number(val));
-    setHomePrice(price);
+    const p = Math.max(0, Number(downPercent));
+    const a = Math.max(0, Number(downAmount));
+    
     if (lastEdited === 'percent') {
-      setDownAmount(price * (downPercent / 100));
+      setDownAmount((price * (p / 100)).toString());
     } else {
-      setDownPercent(price > 0 ? (downAmount / price) * 100 : 0);
+      setDownPercent(price > 0 ? ((a / price) * 100).toString() : '0');
     }
   };
 
   const handlePercentChange = (val: string) => {
+    setDownPercent(val);
     const p = Math.max(0, Number(val));
-    setDownPercent(p);
-    setDownAmount(homePrice * (p / 100));
+    const price = Math.max(0, Number(homePrice));
+    setDownAmount((price * (p / 100)).toString());
     setLastEdited('percent');
   };
 
   const handleAmountChange = (val: string) => {
+    setDownAmount(val);
     const a = Math.max(0, Number(val));
-    setDownAmount(a);
-    setDownPercent(homePrice > 0 ? (a / homePrice) * 100 : 0);
+    const price = Math.max(0, Number(homePrice));
+    setDownPercent(price > 0 ? ((a / price) * 100).toString() : '0');
     setLastEdited('amount');
   };
 
   const result = useMemo(() => {
-    const loanRemaining = Math.max(0, homePrice - downAmount);
+    const hp = Number(homePrice) || 0;
+    const da = Number(downAmount) || 0;
+    const loanRemaining = Math.max(0, hp - da);
     return { 
       loanRemaining, 
-      isFullyFunded: downAmount >= homePrice,
-      percentage: (downAmount / (homePrice || 1)) * 100
+      isFullyFunded: da >= hp,
+      percentage: (da / (hp || 1)) * 100
     };
   }, [homePrice, downAmount]);
 
@@ -52,7 +59,7 @@ export function DownPaymentCalculator() {
               <input
                 value={homePrice}
                 onChange={(e) => handlePriceChange(e.target.value)}
-                className="input-calc pl-9 text-lg font-medium text-primary"
+                className="input-calc pl-10 text-lg font-medium text-primary"
                 type="number"
                 min="0"
               />
@@ -65,9 +72,9 @@ export function DownPaymentCalculator() {
               <div className="relative">
                 <Percent className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
                 <input
-                  value={downPercent.toFixed(2)}
+                  value={downPercent}
                   onChange={(e) => handlePercentChange(e.target.value)}
-                  className="input-calc pl-9"
+                  className="input-calc pl-10"
                   type="number"
                   step="0.1"
                   min="0"
@@ -80,9 +87,9 @@ export function DownPaymentCalculator() {
               <div className="relative">
                 <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
                 <input
-                  value={Math.round(downAmount)}
+                  value={downAmount}
                   onChange={(e) => handleAmountChange(e.target.value)}
-                  className="input-calc pl-9"
+                  className="input-calc pl-10"
                   type="number"
                   min="0"
                 />
@@ -104,10 +111,17 @@ export function DownPaymentCalculator() {
               <span className="font-semibold text-foreground">${Math.round(result.loanRemaining).toLocaleString()}</span>
             </div>
             
-            <div className="flex items-center gap-2 mt-4 text-sm text-center justify-center">
-              <PieChart className="w-4 h-4 text-primary" /> 
-              <span><strong className="text-primary">{result.percentage.toFixed(1)}%</strong> of home funded</span>
-            </div>
+            {result.isFullyFunded ? (
+              <div className="flex items-center gap-2 mt-4 text-sm text-center justify-center text-primary">
+                <CheckCircle2 className="w-5 h-5" /> 
+                <span><strong>Fully Funded!</strong> Property cost covered.</span>
+              </div>
+            ) : (
+              <div className="flex items-center gap-2 mt-4 text-sm text-center justify-center">
+                <PieChart className="w-4 h-4 text-primary" /> 
+                <span><strong className="text-primary">{result.percentage.toFixed(1)}%</strong> of home funded</span>
+              </div>
+            )}
           </div>
         </div>
       </div>

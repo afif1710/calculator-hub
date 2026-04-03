@@ -4,7 +4,7 @@ import { DollarSign, Wallet, Plus, Trash2, PieChart } from 'lucide-react';
 interface Expense {
   id: number;
   name: string;
-  amount: number;
+  amount: string | number;
   type: 'recurring' | 'one-time';
 }
 
@@ -17,7 +17,7 @@ export function ExpenseTrackerCalculator() {
   ]);
 
   const addExpense = () => {
-    setExpenses([...expenses, { id: Date.now(), name: 'New Expense', amount: 0, type: 'recurring' }]);
+    setExpenses([...expenses, { id: Date.now(), name: 'New Expense', amount: '', type: 'recurring' }]);
   };
 
   const updateExpense = (id: number, field: keyof Expense, value: string | number) => {
@@ -51,11 +51,11 @@ export function ExpenseTrackerCalculator() {
       <div className="flex flex-col gap-1.5">
         <label className="text-sm font-medium text-muted-foreground">Monthly Monthly Net Income</label>
         <div className="relative max-w-sm">
-          <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+          <DollarSign className="absolute left-3.5 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
           <input
             value={income}
             onChange={(e) => setIncome(e.target.value)}
-            className="input-calc pl-9 text-lg font-medium text-primary"
+            className="input-calc pl-12 text-lg font-medium text-primary"
             type="number"
             min="0"
           />
@@ -82,11 +82,11 @@ export function ExpenseTrackerCalculator() {
                   placeholder="Expense name"
                 />
                 <div className="relative w-32 shrink-0">
-                  <DollarSign className="absolute left-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-muted-foreground" />
+                  <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-muted-foreground" />
                   <input
                     value={expense.amount}
-                    onChange={(e) => updateExpense(expense.id, 'amount', Number(e.target.value))}
-                    className="input-calc pl-7 py-2 text-sm"
+                    onChange={(e) => updateExpense(expense.id, 'amount', e.target.value)}
+                    className="input-calc pl-9 py-2 text-sm"
                     type="number"
                     min="0"
                   />

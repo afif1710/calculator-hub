@@ -22,7 +22,6 @@ import { DurationCalculator } from './calculators/DurationCalculator';
 import { PowerCalculator } from './calculators/PowerCalculator';
 import { BasicArithmeticCalculator } from './calculators/BasicArithmeticCalculator';
 import { ScientificCalculator } from './calculators/ScientificCalculator';
-import { CurrencyConverter } from './calculators/CurrencyConverter';
 import { CalorieCounter } from './calculators/CalorieCounter';
 import { WaterIntakeCalculator } from './calculators/WaterIntakeCalculator';
 import { BodyFatCalculator } from './calculators/BodyFatCalculator';
@@ -116,7 +115,6 @@ const calculatorComponents: Record<string, React.FC> = {
   power: PowerCalculator,
   basic_arithmetic: BasicArithmeticCalculator,
   scientific: ScientificCalculator,
-  currency: CurrencyConverter,
   calories: CalorieCounter,
   water_intake: WaterIntakeCalculator,
   body_fat: BodyFatCalculator,
