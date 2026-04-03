@@ -29,10 +29,10 @@ export function TakeHomePayCalculator() {
         <button onClick={() => setFrequency('monthly')} className={`flex-1 px-4 py-2 rounded-lg text-sm font-medium transition-all ${frequency === 'monthly' ? 'bg-primary text-primary-foreground' : 'hover:bg-secondary'}`}>Monthly</button>
       </div>
       <div className="grid gap-3">
-        <label className="space-y-1"><span className="text-xs font-medium">Gross Salary ($/{frequency})</span><input type="number" value={grossSalary} onChange={(e) => setGrossSalary(e.target.value)} className="w-full px-3 py-2 rounded-lg bg-secondary/50 border border-border focus:border-primary outline-none text-sm" min="0" /></label>
+        <label className="space-y-1"><span className="text-xs font-medium">Gross Salary ($/{frequency})</span><input placeholder="e.g. 12" type="number" value={grossSalary} onChange={(e) => setGrossSalary(e.target.value)} className="w-full px-3 py-2 rounded-lg bg-secondary/50 border border-border focus:border-primary outline-none text-sm" min="0" /></label>
         <div className="grid grid-cols-2 gap-3">
-          <label className="space-y-1"><span className="text-xs font-medium">Tax Rate (%)</span><input type="number" value={taxRate} onChange={(e) => setTaxRate(e.target.value)} className="w-full px-3 py-2 rounded-lg bg-secondary/50 border border-border focus:border-primary outline-none text-sm" min="0" max="100" /></label>
-          <label className="space-y-1"><span className="text-xs font-medium">Deductions ($/{frequency})</span><input type="number" value={deductions} onChange={(e) => setDeductions(e.target.value)} className="w-full px-3 py-2 rounded-lg bg-secondary/50 border border-border focus:border-primary outline-none text-sm" min="0" /></label>
+          <label className="space-y-1"><span className="text-xs font-medium">Tax Rate (%)</span><input placeholder="e.g. 5.5" type="number" value={taxRate} onChange={(e) => setTaxRate(e.target.value)} className="w-full px-3 py-2 rounded-lg bg-secondary/50 border border-border focus:border-primary outline-none text-sm" min="0" max="100" /></label>
+          <label className="space-y-1"><span className="text-xs font-medium">Deductions ($/{frequency})</span><input placeholder="e.g. 5.5" type="number" value={deductions} onChange={(e) => setDeductions(e.target.value)} className="w-full px-3 py-2 rounded-lg bg-secondary/50 border border-border focus:border-primary outline-none text-sm" min="0" /></label>
         </div>
       </div>
       <div className="p-4 rounded-xl bg-secondary/30 border border-border">

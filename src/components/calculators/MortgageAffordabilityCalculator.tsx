@@ -82,32 +82,32 @@ export function MortgageAffordabilityCalculator() {
       <div className="grid grid-cols-2 gap-3">
         <label className="space-y-1">
           <span className="text-xs font-medium">Annual Income ($)</span>
-          <input type="number" value={annualIncome} onChange={(e) => setAnnualIncome(e.target.value)}
+          <input placeholder="e.g. 5000" type="number" value={annualIncome} onChange={(e) => setAnnualIncome(e.target.value)}
             className="w-full px-3 py-2 rounded-lg bg-secondary/50 border border-border focus:border-primary outline-none text-sm" min="0" />
         </label>
         <label className="space-y-1">
           <span className="text-xs font-medium">Monthly Debts ($)</span>
-          <input type="number" value={monthlyDebts} onChange={(e) => setMonthlyDebts(e.target.value)}
+          <input placeholder="e.g. 12" type="number" value={monthlyDebts} onChange={(e) => setMonthlyDebts(e.target.value)}
             className="w-full px-3 py-2 rounded-lg bg-secondary/50 border border-border focus:border-primary outline-none text-sm" min="0" />
         </label>
         <label className="space-y-1">
           <span className="text-xs font-medium">Interest Rate (%)</span>
-          <input type="number" value={interestRate} onChange={(e) => setInterestRate(e.target.value)}
+          <input placeholder="e.g. 5.5" type="number" value={interestRate} onChange={(e) => setInterestRate(e.target.value)}
             className="w-full px-3 py-2 rounded-lg bg-secondary/50 border border-border focus:border-primary outline-none text-sm" min="0" step="0.125" />
         </label>
         <label className="space-y-1">
           <span className="text-xs font-medium">Loan Term (years)</span>
-          <input type="number" value={loanTerm} onChange={(e) => setLoanTerm(e.target.value)}
+          <input placeholder="e.g. 12" type="number" value={loanTerm} onChange={(e) => setLoanTerm(e.target.value)}
             className="w-full px-3 py-2 rounded-lg bg-secondary/50 border border-border focus:border-primary outline-none text-sm" min="1" max="30" />
         </label>
         <label className="space-y-1">
           <span className="text-xs font-medium">Target DTI (%)</span>
-          <input type="number" value={dtiTarget} onChange={(e) => setDtiTarget(e.target.value)}
+          <input placeholder="e.g. 5.5" type="number" value={dtiTarget} onChange={(e) => setDtiTarget(e.target.value)}
             className="w-full px-3 py-2 rounded-lg bg-secondary/50 border border-border focus:border-primary outline-none text-sm" min="1" max="50" />
         </label>
         <label className="space-y-1">
           <span className="text-xs font-medium">Down Payment (%)</span>
-          <input type="number" value={downPaymentPercent} onChange={(e) => setDownPaymentPercent(e.target.value)}
+          <input placeholder="e.g. 5.5" type="number" value={downPaymentPercent} onChange={(e) => setDownPaymentPercent(e.target.value)}
             className="w-full px-3 py-2 rounded-lg bg-secondary/50 border border-border focus:border-primary outline-none text-sm" min="0" max="99" />
         </label>
       </div>

@@ -103,47 +103,47 @@ export function RentVsBuyCalculator() {
       <div className="grid grid-cols-2 gap-3">
         <label className="space-y-1">
           <span className="text-xs font-medium">Monthly Rent ($)</span>
-          <input type="number" value={monthlyRent} onChange={(e) => setMonthlyRent(e.target.value)}
+          <input placeholder="e.g. 12" type="number" value={monthlyRent} onChange={(e) => setMonthlyRent(e.target.value)}
             className="w-full px-3 py-2 rounded-lg bg-secondary/50 border border-border focus:border-primary outline-none text-sm" min="0" />
         </label>
         <label className="space-y-1">
           <span className="text-xs font-medium">Rent Growth (%/yr)</span>
-          <input type="number" value={rentGrowth} onChange={(e) => setRentGrowth(e.target.value)}
+          <input placeholder="e.g. 5.5" type="number" value={rentGrowth} onChange={(e) => setRentGrowth(e.target.value)}
             className="w-full px-3 py-2 rounded-lg bg-secondary/50 border border-border focus:border-primary outline-none text-sm" min="0" step="0.5" />
         </label>
         <label className="space-y-1">
           <span className="text-xs font-medium">Home Price ($)</span>
-          <input type="number" value={homePrice} onChange={(e) => setHomePrice(e.target.value)}
+          <input placeholder="e.g. 5000" type="number" value={homePrice} onChange={(e) => setHomePrice(e.target.value)}
             className="w-full px-3 py-2 rounded-lg bg-secondary/50 border border-border focus:border-primary outline-none text-sm" min="0" />
         </label>
         <label className="space-y-1">
           <span className="text-xs font-medium">Down Payment (%)</span>
-          <input type="number" value={downPayment} onChange={(e) => setDownPayment(e.target.value)}
+          <input placeholder="e.g. 5.5" type="number" value={downPayment} onChange={(e) => setDownPayment(e.target.value)}
             className="w-full px-3 py-2 rounded-lg bg-secondary/50 border border-border focus:border-primary outline-none text-sm" min="0" max="100" />
         </label>
         <label className="space-y-1">
           <span className="text-xs font-medium">Mortgage Rate (%)</span>
-          <input type="number" value={mortgageRate} onChange={(e) => setMortgageRate(e.target.value)}
+          <input placeholder="e.g. 5.5" type="number" value={mortgageRate} onChange={(e) => setMortgageRate(e.target.value)}
             className="w-full px-3 py-2 rounded-lg bg-secondary/50 border border-border focus:border-primary outline-none text-sm" min="0" step="0.125" />
         </label>
         <label className="space-y-1">
           <span className="text-xs font-medium">Years to Compare</span>
-          <input type="number" value={years} onChange={(e) => setYears(e.target.value)}
+          <input placeholder="e.g. 12" type="number" value={years} onChange={(e) => setYears(e.target.value)}
             className="w-full px-3 py-2 rounded-lg bg-secondary/50 border border-border focus:border-primary outline-none text-sm" min="1" max="30" />
         </label>
         <label className="space-y-1">
           <span className="text-xs font-medium">Maintenance (%/yr)</span>
-          <input type="number" value={maintenance} onChange={(e) => setMaintenance(e.target.value)}
+          <input placeholder="e.g. 5.5" type="number" value={maintenance} onChange={(e) => setMaintenance(e.target.value)}
             className="w-full px-3 py-2 rounded-lg bg-secondary/50 border border-border focus:border-primary outline-none text-sm" min="0" step="0.1" />
         </label>
         <label className="space-y-1">
           <span className="text-xs font-medium">Property Tax (%/yr)</span>
-          <input type="number" value={propertyTax} onChange={(e) => setPropertyTax(e.target.value)}
+          <input placeholder="e.g. 5.5" type="number" value={propertyTax} onChange={(e) => setPropertyTax(e.target.value)}
             className="w-full px-3 py-2 rounded-lg bg-secondary/50 border border-border focus:border-primary outline-none text-sm" min="0" step="0.1" />
         </label>
         <label className="col-span-2 space-y-1">
           <span className="text-xs font-medium">Home Appreciation (%/yr)</span>
-          <input type="number" value={appreciation} onChange={(e) => setAppreciation(e.target.value)}
+          <input placeholder="e.g. 5.5" type="number" value={appreciation} onChange={(e) => setAppreciation(e.target.value)}
             className="w-full px-3 py-2 rounded-lg bg-secondary/50 border border-border focus:border-primary outline-none text-sm" min="0" step="0.5" />
         </label>
       </div>

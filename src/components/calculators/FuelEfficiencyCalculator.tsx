@@ -22,7 +22,7 @@ export function FuelEfficiencyCalculator() {
   return (
     <div className="space-y-6">
       <div className="grid grid-cols-2 gap-3">
-        <label className="space-y-1"><span className="text-xs font-medium">Value</span><input type="number" value={value} onChange={(e) => setValue(e.target.value)} className="w-full px-3 py-2 rounded-lg bg-secondary/50 border border-border focus:border-primary outline-none text-sm" min="0" step="0.1" /></label>
+        <label className="space-y-1"><span className="text-xs font-medium">Value</span><input placeholder="e.g. 5.5" type="number" value={value} onChange={(e) => setValue(e.target.value)} className="w-full px-3 py-2 rounded-lg bg-secondary/50 border border-border focus:border-primary outline-none text-sm" min="0" step="0.1" /></label>
         <label className="space-y-1"><span className="text-xs font-medium">Unit</span><select value={from} onChange={(e) => setFrom(e.target.value as typeof from)} className="w-full px-3 py-2 rounded-lg bg-secondary/50 border border-border focus:border-primary outline-none text-sm"><option value="mpg">MPG (US)</option><option value="kmpl">km/L</option><option value="l100km">L/100km</option></select></label>
       </div>
       <div className="p-4 rounded-xl bg-secondary/30 border border-border">

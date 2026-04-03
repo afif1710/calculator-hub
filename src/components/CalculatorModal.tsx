@@ -82,6 +82,14 @@ import { MortgageRefinanceCalculator } from './calculators/MortgageRefinanceCalc
 import { PricingCalculator } from './calculators/PricingCalculator';
 import { ReorderPointCalculator } from './calculators/ReorderPointCalculator';
 import { CronExpressionCalculator } from './calculators/CronExpressionCalculator';
+import { SalesTaxCalculator } from './calculators/SalesTaxCalculator';
+import { UnitPriceCalculator } from './calculators/UnitPriceCalculator';
+import { BudgetPlannerCalculator } from './calculators/BudgetPlannerCalculator';
+import { SavingsGoalCalculator } from './calculators/SavingsGoalCalculator';
+import { RetirementPlannerCalculator } from './calculators/RetirementPlannerCalculator';
+import { LoanAmortizationCalculator } from './calculators/LoanAmortizationCalculator';
+import { DownPaymentCalculator } from './calculators/DownPaymentCalculator';
+import { ExpenseTrackerCalculator } from './calculators/ExpenseTrackerCalculator';
 
 const calculatorComponents: Record<string, React.FC> = {
   mortgage: MortgageCalculator,
@@ -94,7 +102,7 @@ const calculatorComponents: Record<string, React.FC> = {
   sample_size: SampleSizeCalculator,
   compound_interest: CompoundInterestCalculator,
   percentage: PercentageCalculator,
-  tip: TipCalculator,
+  tip_splitter: TipCalculator,
   age: AgeCalculator,
   // All-in-one Unit Converter
   unit_converter: UnitConverter,
@@ -142,7 +150,7 @@ const calculatorComponents: Record<string, React.FC> = {
   cagr: CAGRCalculator,
   sip: SIPCalculator,
   inflation: InflationCalculator,
-  credit_card: CreditCardPayoffCalculator,
+  debt_payoff: CreditCardPayoffCalculator,
   cpm: CPMCalculator,
   cpc: CPCCalculator,
   ctr: CTRCalculator,
@@ -159,7 +167,7 @@ const calculatorComponents: Record<string, React.FC> = {
   flooring: FlooringCalculator,
   concrete: ConcreteCalculator,
   salary: SalaryCalculator,
-  take_home: TakeHomePayCalculator,
+  take_home_pay: TakeHomePayCalculator,
   fuel_efficiency: FuelEfficiencyCalculator,
   // New calculators
   loan_comparison: LoanComparisonCalculator,
@@ -168,6 +176,14 @@ const calculatorComponents: Record<string, React.FC> = {
   pricing: PricingCalculator,
   reorder_point: ReorderPointCalculator,
   cron: CronExpressionCalculator,
+  sales_tax: SalesTaxCalculator,
+  unit_price: UnitPriceCalculator,
+  budget_planner: BudgetPlannerCalculator,
+  savings_goal: SavingsGoalCalculator,
+  retirement_planner: RetirementPlannerCalculator,
+  loan_amortization: LoanAmortizationCalculator,
+  down_payment: DownPaymentCalculator,
+  expense_tracker: ExpenseTrackerCalculator,
 };
 
 interface CalculatorModalProps {
