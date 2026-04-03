@@ -53,7 +53,7 @@ export function SearchBar({ onSelectCalculator, initialQuery = '' }: SearchBarPr
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-background/80 backdrop-blur-sm z-50"
+              className="fixed inset-0 bg-black/60 dark:bg-background/90 z-50"
               onClick={close}
             />
             {/* Wrapper with flex centering - no translate hacks */}
@@ -61,7 +61,7 @@ export function SearchBar({ onSelectCalculator, initialQuery = '' }: SearchBarPr
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 z-50 flex items-start justify-center p-4 pt-20 md:items-center md:pt-4"
+              className="fixed inset-0 z-50 flex items-start justify-center p-4 pt-12 md:items-center md:pt-4"
               onClick={close}
             >
               <motion.div
@@ -72,18 +72,18 @@ export function SearchBar({ onSelectCalculator, initialQuery = '' }: SearchBarPr
                 className="w-full max-w-lg mt-0 md:mt-[-10vh]"
                 onClick={(e) => e.stopPropagation()}
               >
-                <div className="glass-strong rounded-2xl shadow-2xl overflow-hidden">
-                  <div className="flex items-center gap-3 px-4 py-3 border-b border-border">
+                <div className="bg-white dark:bg-card rounded-2xl shadow-2xl overflow-hidden border border-border/50">
+                  <div className="flex items-center gap-3 px-4 py-4 border-b border-border">
                     <Search className="w-5 h-5 text-muted-foreground" />
                     <input
                       ref={inputRef}
                       type="text"
                       value={query}
                       onChange={(e) => setQuery(e.target.value)}
-                      placeholder="Search calculators, e.g. EMI, BMI, subnet..."
-                      className="flex-1 bg-transparent border-none outline-none text-foreground placeholder:text-muted-foreground"
+                      placeholder="Search calculators..."
+                      className="flex-1 bg-transparent border-none outline-none text-gray-900 dark:text-foreground placeholder:text-muted-foreground text-base md:text-lg"
                     />
-                    <button onClick={close} className="p-1 rounded hover:bg-secondary">
+                    <button onClick={close} className="p-1.5 rounded-full hover:bg-secondary transition-colors">
                       <X className="w-4 h-4" />
                     </button>
                   </div>

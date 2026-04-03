@@ -28,7 +28,7 @@ const CATEGORY_IMAGES: Record<string, string> = {
 
 const SPECIFIC_CALC_IMAGES: Record<string, string> = {
   // Math
-  matrix: "https://images.unsplash.com/photo-1509228468518-180dd482180c?auto=format&fit=crop&w=400&q=80",
+  matrix: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=600&q=80",
   scientific: "https://images.unsplash.com/photo-1518133910546-b6c2fb7d79e3?auto=format&fit=crop&w=400&q=80",
   quadratic: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=400&q=80",
   
@@ -152,11 +152,11 @@ const Index = () => {
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
                  {currentCategory.calculators.map((calc, idx) => (
                    <article key={calc.id} onClick={() => handleSelectCalculator(currentCategory.id, calc.id)} className="relative rounded-[16px] overflow-hidden aspect-[4/5] shadow-sm flex flex-col justify-end group cursor-pointer border border-border/10 hover:border-primary/40 transition-all">
-                      <img src={getCalcImage(calc.id, idx)} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt={calc.title} />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/10 to-transparent pointer-events-none" />
-                      <div className="relative p-3 text-white z-10">
-                        <h2 className="font-serif text-sm md:text-base leading-tight mb-0.5 line-clamp-1">{calc.title}</h2>
-                        <p className="font-serif text-[0.75rem] md:text-[0.85rem] opacity-80 line-clamp-2">{calc.description}</p>
+                      <img src={getCalcImage(calc.id, idx)} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90 dark:opacity-100" alt={calc.title} />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
+                      <div className="relative p-3 text-white z-10 text-left">
+                        <h2 className="font-serif text-sm md:text-base leading-tight mb-0.5 font-bold line-clamp-1">{calc.title}</h2>
+                        <p className="font-serif text-[0.75rem] md:text-[0.85rem] opacity-90 line-clamp-2">{calc.description}</p>
                       </div>
                    </article>
                  ))}
@@ -203,11 +203,11 @@ const Index = () => {
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
           {gridCategories.map(category => (
             <div key={category.id} onClick={() => setExpandedCategory(category.id)} className="relative w-full aspect-square rounded-[16px] overflow-hidden shadow-card cursor-pointer group border border-border/10 hover:border-primary/40 transition-all">
-              <img src={CATEGORY_IMAGES[category.id] || CATEGORY_IMAGES.everyday} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt={category.title} />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-black/10 to-transparent pointer-events-none transition-colors duration-500"></div>
-              <div className="absolute bottom-0 left-0 w-full p-3 text-foreground dark:text-white z-10 text-center">
-                 <h4 className="font-serif text-sm md:text-base leading-tight mb-0.5">{category.title}</h4>
-                 <span className="text-[10px] font-light opacity-70 font-sans">Discover Tools</span>
+              <img src={CATEGORY_IMAGES[category.id] || CATEGORY_IMAGES.everyday} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-80 dark:opacity-100" alt={category.title} />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none transition-colors duration-500"></div>
+              <div className="absolute bottom-0 left-0 w-full p-3 text-white z-10 text-center">
+                 <h4 className="font-serif text-sm md:text-base leading-tight mb-0.5 font-bold">{category.title}</h4>
+                 <span className="text-[10px] font-medium opacity-90 font-sans">Discover Tools</span>
               </div>
             </div>
           ))}
