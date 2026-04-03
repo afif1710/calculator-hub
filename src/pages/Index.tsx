@@ -33,20 +33,20 @@ const SPECIFIC_CALC_IMAGES: Record<string, string> = {
   quadratic: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=400&q=80",
   
   // Real Estate & Debt
-  mortgage: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=400&q=80",
+  mortgage: "https://images.unsplash.com/photo-1554469384-e58fac16e23a?auto=format&fit=crop&w=400&q=80",
   down_payment: "https://images.unsplash.com/photo-1582407947304-fd86f028f716?auto=format&fit=crop&w=400&q=80",
   mortgage_afford: "https://images.unsplash.com/photo-1560520031-3a4dc4e9de0c?auto=format&fit=crop&w=400&q=80",
   rent_vs_buy: "https://images.unsplash.com/photo-1518780664697-55e3ad937233?auto=format&fit=crop&w=400&q=80",
   rental_yield: "https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?auto=format&fit=crop&w=400&q=80",
   cap_rate: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=400&q=80",
   loan_amortization: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=400&q=80",
-  debt_payoff: "https://images.unsplash.com/photo-1580514614214-4113ab11bcba?auto=format&fit=crop&w=400&q=80",
+  debt_payoff: "https://images.unsplash.com/photo-1621416848446-99520c915963?auto=format&fit=crop&w=400&q=80",
 
   // Finance Investments
   compound_interest: "https://images.unsplash.com/photo-1518458028785-8fbcd101ebb9?auto=format&fit=crop&w=400&q=80",
   currency: "https://images.unsplash.com/photo-1580519542036-c47de6196ba5?auto=format&fit=crop&w=400&q=80",
   budget_planner: "https://images.unsplash.com/photo-1554224154-26032ffc0d07?auto=format&fit=crop&w=400&q=80",
-  expense_tracker: "https://images.unsplash.com/photo-1633535978148-decf9a60ed11?auto=format&fit=crop&w=400&q=80",
+  expense_tracker: "https://images.unsplash.com/photo-1633158829585-23ba8f7c9bc1?auto=format&fit=crop&w=400&q=80",
   savings_goal: "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?auto=format&fit=crop&w=400&q=80",
   retirement_planner: "https://images.unsplash.com/photo-1532619675605-1ede6c2ed2b0?auto=format&fit=crop&w=400&q=80",
 
@@ -57,13 +57,13 @@ const SPECIFIC_CALC_IMAGES: Record<string, string> = {
 
   // Business
   pricing: "https://images.unsplash.com/photo-1534452203293-494d7ddbf7e0?auto=format&fit=crop&w=400&q=80",
-  profit_margin: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=400&q=80",
+  profit_margin: "https://images.unsplash.com/photo-1579621970795-87f9bf77039d?auto=format&fit=crop&w=400&q=80",
   inventory_turnover: "https://images.unsplash.com/photo-1586528116311-ad8ed7c663b0?auto=format&fit=crop&w=400&q=80",
   reorder_point: "https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=400&q=80",
 
   // Developer & Security
   json_csv: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=400&q=80",
-  subnet: "https://images.unsplash.com/photo-1558494949-ef010cbdcc48?auto=format&fit=crop&w=400&q=80",
+  subnet: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=400&q=80",
   jwt_decoder: "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=400&q=80",
 
   // Health

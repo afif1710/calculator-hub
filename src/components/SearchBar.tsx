@@ -48,89 +48,95 @@ export function SearchBar({ onSelectCalculator, initialQuery = '' }: SearchBarPr
       {/* Search Modal */}
       <AnimatePresence>
         {isOpen && (
-          <>
+          <div className="fixed inset-0 z-[100] flex flex-col">
+            {/* Backdrop for Desktop */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/60 dark:bg-background/90 z-50"
+              className="absolute inset-0 bg-black/60 dark:bg-background/95 backdrop-blur-md hidden md:block"
               onClick={close}
             />
-            {/* Wrapper with flex centering - no translate hacks */}
+            
+            {/* Search Container */}
             <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 z-50 flex items-start justify-center p-4 pt-12 md:items-center md:pt-4"
-              onClick={close}
+              initial={{ opacity: 0, scale: 0.98, y: 10 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.98, y: 10 }}
+              transition={{ duration: 0.2, ease: "easeOut" }}
+              className="relative w-full h-full md:h-auto md:max-w-2xl md:mx-auto md:mt-24 md:rounded-2xl overflow-hidden bg-background dark:bg-card shadow-2xl flex flex-col"
             >
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95, y: -20 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.95, y: -20 }}
-                transition={{ type: 'spring', stiffness: 400, damping: 30 }}
-                className="w-full max-w-lg mt-0 md:mt-[-10vh]"
-                onClick={(e) => e.stopPropagation()}
-              >
-                <div className="bg-white dark:bg-card rounded-2xl shadow-2xl overflow-hidden border border-border/50">
-                  <div className="flex items-center gap-3 px-4 py-4 border-b border-border">
-                    <Search className="w-5 h-5 text-muted-foreground" />
-                    <input
-                      ref={inputRef}
-                      type="text"
-                      value={query}
-                      onChange={(e) => setQuery(e.target.value)}
-                      placeholder="Search calculators..."
-                      className="flex-1 bg-transparent border-none outline-none text-gray-900 dark:text-foreground placeholder:text-muted-foreground text-base md:text-lg"
-                    />
-                    <button onClick={close} className="p-1.5 rounded-full hover:bg-secondary transition-colors">
-                      <X className="w-4 h-4" />
-                    </button>
-                  </div>
+              <div className="flex items-center gap-3 px-4 py-4 md:py-5 border-b border-border bg-background dark:bg-card">
+                <Search className="w-5 h-5 text-muted-foreground" />
+                <input
+                  ref={inputRef}
+                  type="text"
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
+                  placeholder="Search 89+ calculators..."
+                  className="flex-1 bg-transparent border-none outline-none text-foreground text-lg md:text-xl font-medium placeholder:text-muted-foreground/60 p-0"
+                />
+                <button 
+                  onClick={close} 
+                  className="p-2 rounded-full hover:bg-secondary transition-colors text-muted-foreground hover:text-foreground"
+                >
+                  <X className="w-6 h-6" />
+                </button>
+              </div>
 
-                  <div className="max-h-80 overflow-y-auto">
-                    {results.length > 0 ? (
-                      <ul className="p-2">
-                        {results.map((calc, i) => (
-                          <motion.li
-                            key={calc.id}
-                            initial={{ opacity: 0, x: -10 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: i * 0.03 }}
+              <div className="flex-1 overflow-y-auto bg-background/50 dark:bg-card/50">
+                {results.length > 0 ? (
+                  <div className="p-3 md:p-4">
+                    <div className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/70 mb-3 px-2">
+                      Top Recommendations
+                    </div>
+                    <ul className="grid gap-1">
+                      {results.map((calc, i) => (
+                        <motion.li
+                          key={calc.id}
+                          initial={{ opacity: 0, y: 5 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: i * 0.05 }}
+                        >
+                          <button
+                            onClick={() => handleSelect(calc.categoryId, calc.id)}
+                            className="w-full flex items-center gap-4 px-3 py-3.5 rounded-xl hover:bg-primary/10 dark:hover:bg-primary/20 text-left transition-all border border-transparent hover:border-primary/20 group"
                           >
-                            <button
-                              onClick={() => handleSelect(calc.categoryId, calc.id)}
-                              className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-secondary text-left transition-colors"
-                            >
-                              <div className="flex-1">
-                                <div className="font-medium text-foreground">{calc.title}</div>
-                                <div className="text-sm text-muted-foreground">{calc.categoryTitle}</div>
-                              </div>
-                              <span className={`text-xs px-2 py-0.5 rounded-full ${
-                                calc.complexity === 'advanced' 
-                                  ? 'bg-primary/20 text-primary' 
-                                  : 'bg-secondary text-muted-foreground'
-                              }`}>
-                                {calc.complexity}
-                              </span>
-                            </button>
-                          </motion.li>
-                        ))}
-                      </ul>
-                    ) : query ? (
-                      <div className="p-8 text-center text-muted-foreground">
-                        No calculators found for "{query}"
-                      </div>
-                    ) : (
-                      <div className="p-8 text-center text-muted-foreground">
-                        Start typing to search...
-                      </div>
-                    )}
+                            <div className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                              <Search className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                            </div>
+                            <div className="flex-1 min-w-0">
+                              <div className="font-semibold text-foreground text-base leading-tight mb-0.5">{calc.title}</div>
+                              <div className="text-xs text-muted-foreground truncate">{calc.categoryTitle} • {calc.description}</div>
+                            </div>
+                            <div className="flex items-center text-xs font-medium text-muted-foreground/60 px-2 py-1 rounded-md bg-secondary/50">
+                              View Tool
+                            </div>
+                          </button>
+                        </motion.li>
+                      ))}
+                    </ul>
                   </div>
-                </div>
-              </motion.div>
+                ) : query ? (
+                  <div className="p-12 text-center">
+                    <div className="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mx-auto mb-4">
+                      <Search className="w-8 h-8 text-muted-foreground/50" />
+                    </div>
+                    <h3 className="text-lg font-medium text-foreground mb-1">No matches for "{query}"</h3>
+                    <p className="text-sm text-muted-foreground">Try searching for keywords like "mortgage", "unit", or "binary".</p>
+                  </div>
+                ) : (
+                  <div className="p-12 text-center">
+                    <div className="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mx-auto mb-4">
+                      <Command className="w-8 h-8 text-muted-foreground/50" />
+                    </div>
+                    <h3 className="text-lg font-medium text-foreground mb-1">Search CalcHub</h3>
+                    <p className="text-sm text-muted-foreground">Quickly find any of our 89+ analytical tools.</p>
+                  </div>
+                )}
+              </div>
             </motion.div>
-          </>
+          </div>
         )}
       </AnimatePresence>
     </>
