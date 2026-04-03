@@ -3,12 +3,12 @@ import { Percent } from 'lucide-react';
 
 export function PercentageCalculator() {
   const [mode, setMode] = useState<'whatIs' | 'whatPercent' | 'change'>('whatIs');
-  const [value1, setValue1] = useState(25);
-  const [value2, setValue2] = useState(200);
+  const [value1, setValue1] = useState('25');
+  const [value2, setValue2] = useState('200');
 
   const result = useMemo(() => {
-    const v1 = Number(value1);
-    const v2 = Number(value2);
+    const v1 = parseFloat(value1) || 0;
+    const v2 = parseFloat(value2) || 0;
 
     switch (mode) {
       case 'whatIs':
@@ -67,7 +67,7 @@ export function PercentageCalculator() {
           </span>
           <input
             value={value1}
-            onChange={e => setValue1(Number(e.target.value))}
+            onChange={e => setValue1(e.target.value)}
             className="input-calc"
             type="number"
           />
@@ -78,7 +78,7 @@ export function PercentageCalculator() {
           </span>
           <input
             value={value2}
-            onChange={e => setValue2(Number(e.target.value))}
+            onChange={e => setValue2(e.target.value)}
             className="input-calc"
             type="number"
           />

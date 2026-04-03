@@ -2,18 +2,18 @@ import { useState, useMemo } from 'react';
 import { TrendingUp } from 'lucide-react';
 
 export function CompoundInterestCalculator() {
-  const [principal, setPrincipal] = useState(10000);
-  const [rate, setRate] = useState(7);
-  const [time, setTime] = useState(10);
-  const [frequency, setFrequency] = useState(12);
-  const [contribution, setContribution] = useState(100);
+  const [principal, setPrincipal] = useState('10000');
+  const [rate, setRate] = useState('7');
+  const [time, setTime] = useState('10');
+  const [frequency, setFrequency] = useState('12');
+  const [contribution, setContribution] = useState('100');
 
   const result = useMemo(() => {
-    const P = Number(principal);
-    const r = Number(rate) / 100;
-    const t = Number(time);
-    const n = Number(frequency);
-    const PMT = Number(contribution);
+    const P = parseFloat(principal) || 0;
+    const r = parseFloat(rate) || 0 / 100;
+    const t = parseFloat(time) || 0;
+    const n = parseFloat(frequency) || 0;
+    const PMT = parseFloat(contribution) || 0;
 
     // Future value with compound interest and periodic contributions
     const compoundFactor = Math.pow(1 + r / n, n * t);
@@ -54,7 +54,7 @@ export function CompoundInterestCalculator() {
           <span className="text-sm font-medium text-muted-foreground">Initial Investment</span>
           <input
             value={principal}
-            onChange={e => setPrincipal(Number(e.target.value))}
+            onChange={e => setPrincipal(e.target.value)}
             className="input-calc"
             type="number"
             min="0"
@@ -64,7 +64,7 @@ export function CompoundInterestCalculator() {
           <span className="text-sm font-medium text-muted-foreground">Annual Interest Rate (%)</span>
           <input
             value={rate}
-            onChange={e => setRate(Number(e.target.value))}
+            onChange={e => setRate(e.target.value)}
             className="input-calc"
             type="number"
             step="0.1"
@@ -75,7 +75,7 @@ export function CompoundInterestCalculator() {
           <span className="text-sm font-medium text-muted-foreground">Time Period (years)</span>
           <input
             value={time}
-            onChange={e => setTime(Number(e.target.value))}
+            onChange={e => setTime(e.target.value)}
             className="input-calc"
             type="number"
             min="1"
@@ -85,7 +85,7 @@ export function CompoundInterestCalculator() {
           <span className="text-sm font-medium text-muted-foreground">Compound Frequency</span>
           <select
             value={frequency}
-            onChange={e => setFrequency(Number(e.target.value))}
+            onChange={e => setFrequency(e.target.value)}
             className="input-calc"
           >
             <option value={1}>Annually</option>
@@ -98,7 +98,7 @@ export function CompoundInterestCalculator() {
           <span className="text-sm font-medium text-muted-foreground">Monthly Contribution</span>
           <input
             value={contribution}
-            onChange={e => setContribution(Number(e.target.value))}
+            onChange={e => setContribution(e.target.value)}
             className="input-calc"
             type="number"
             min="0"

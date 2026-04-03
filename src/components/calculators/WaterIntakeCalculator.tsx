@@ -6,7 +6,7 @@ export function WaterIntakeCalculator() {
   const [unit, setUnit] = useState<'kg' | 'lbs'>('kg');
   const [activityLevel, setActivityLevel] = useState<'sedentary' | 'moderate' | 'active' | 'very_active'>('moderate');
   const [climate, setClimate] = useState<'temperate' | 'hot' | 'humid'>('temperate');
-  const [consumed, setConsumed] = useState(0);
+  const [consumed, setConsumed] = useState('0');
   const [copied, setCopied] = useState(false);
 
   const recommendation = useMemo(() => {

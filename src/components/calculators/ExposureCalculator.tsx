@@ -16,10 +16,10 @@ export function ExposureCalculator() {
   const [mode, setMode] = useState<'aperture' | 'shutter' | 'iso'>('aperture');
   const [currentAperture, setCurrentAperture] = useState('f/5.6');
   const [currentShutter, setCurrentShutter] = useState('1/125');
-  const [currentISO, setCurrentISO] = useState(400);
+  const [currentISO, setCurrentISO] = useState('400');
   const [newAperture, setNewAperture] = useState('f/8');
   const [newShutter, setNewShutter] = useState('1/60');
-  const [newISO, setNewISO] = useState(800);
+  const [newISO, setNewISO] = useState('800');
   const [copied, setCopied] = useState(false);
 
   // Convert values to EV stops

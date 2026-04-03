@@ -155,13 +155,13 @@ export function CalorieCounter() {
       </div>
 
       {/* Custom Food Entry */}
-      <div className="flex gap-2">
+      <div className="flex flex-wrap md:flex-nowrap gap-2">
         <input
           type="text"
           value={customName}
           onChange={(e) => setCustomName(e.target.value)}
           placeholder="Food name"
-          className="flex-1 px-4 py-3 rounded-xl bg-secondary/50 border border-border focus:border-primary outline-none transition-all"
+          className="flex-1 min-w-[140px] px-3 py-2.5 rounded-xl bg-secondary/50 border border-border focus:border-primary outline-none transition-all text-sm"
         />
         <input
           type="number"
@@ -169,12 +169,12 @@ export function CalorieCounter() {
           onChange={(e) => setCustomCalories(e.target.value)}
           placeholder="kcal"
           min="0"
-          className="w-24 px-4 py-3 rounded-xl bg-secondary/50 border border-border focus:border-primary outline-none transition-all"
+          className="w-20 px-3 py-2.5 rounded-xl bg-secondary/50 border border-border focus:border-primary outline-none transition-all text-sm"
         />
         <button
           onClick={addCustomFood}
           disabled={!customName || !customCalories}
-          className="p-3 rounded-xl bg-primary text-primary-foreground hover:bg-primary/90 transition-colors disabled:opacity-50"
+          className="p-2.5 rounded-xl bg-primary text-primary-foreground hover:bg-primary/90 transition-colors disabled:opacity-50 shrink-0"
         >
           <Plus className="w-5 h-5" />
         </button>

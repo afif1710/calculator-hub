@@ -26,12 +26,12 @@ export function PrintSizeCalculator() {
   // For calculating required resolution
   const [printWidth, setPrintWidth] = useState('8');
   const [printHeight, setPrintHeight] = useState('10');
-  const [targetDPI, setTargetDPI] = useState(300);
+  const [targetDPI, setTargetDPI] = useState('300');
   
   // For calculating max print size
   const [imageWidth, setImageWidth] = useState('4000');
   const [imageHeight, setImageHeight] = useState('3000');
-  const [minDPI, setMinDPI] = useState(300);
+  const [minDPI, setMinDPI] = useState('300');
   
   const [copied, setCopied] = useState(false);
 

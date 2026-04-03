@@ -94,8 +94,8 @@ Lifetime Interest Saved: $${result.lifetimeSavings.toFixed(2)}`;
     <div className="space-y-5">
       <div className="p-4 rounded-xl bg-secondary/30 space-y-3">
         <span className="text-sm font-semibold text-foreground">Current Loan</span>
-        <div className="grid grid-cols-3 gap-3">
-          <div className="flex flex-col gap-1.5">
+        <div className="grid grid-cols-3 gap-3 items-end">
+          <div className="flex flex-col gap-1.5 h-full justify-end">
             <label className="text-xs text-muted-foreground">Balance ($)</label>
             <input
               type="number"
@@ -106,7 +106,7 @@ Lifetime Interest Saved: $${result.lifetimeSavings.toFixed(2)}`;
               min="0"
             />
           </div>
-          <div className="flex flex-col gap-1.5">
+          <div className="flex flex-col gap-1.5 h-full justify-end">
             <label className="text-xs text-muted-foreground">Rate (%)</label>
             <input
               type="number"
@@ -118,7 +118,7 @@ Lifetime Interest Saved: $${result.lifetimeSavings.toFixed(2)}`;
               step="0.1"
             />
           </div>
-          <div className="flex flex-col gap-1.5">
+          <div className="flex flex-col gap-1.5 h-full justify-end">
             <label className="text-xs text-muted-foreground">Remaining (months)</label>
             <input
               type="number"
@@ -134,8 +134,8 @@ Lifetime Interest Saved: $${result.lifetimeSavings.toFixed(2)}`;
 
       <div className="p-4 rounded-xl bg-secondary/30 space-y-3">
         <span className="text-sm font-semibold text-foreground">New Loan</span>
-        <div className="grid grid-cols-3 gap-3">
-          <div className="flex flex-col gap-1.5">
+        <div className="grid grid-cols-3 gap-3 items-end">
+          <div className="flex flex-col gap-1.5 h-full justify-end">
             <label className="text-xs text-muted-foreground">New Rate (%)</label>
             <input
               type="number"
@@ -147,7 +147,7 @@ Lifetime Interest Saved: $${result.lifetimeSavings.toFixed(2)}`;
               step="0.1"
             />
           </div>
-          <div className="flex flex-col gap-1.5">
+          <div className="flex flex-col gap-1.5 h-full justify-end">
             <label className="text-xs text-muted-foreground">New Term (months)</label>
             <input
               type="number"
@@ -158,7 +158,7 @@ Lifetime Interest Saved: $${result.lifetimeSavings.toFixed(2)}`;
               min="1"
             />
           </div>
-          <div className="flex flex-col gap-1.5">
+          <div className="flex flex-col gap-1.5 h-full justify-end">
             <label className="text-xs text-muted-foreground">Closing Costs ($)</label>
             <input
               type="number"

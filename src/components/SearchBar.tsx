@@ -61,7 +61,7 @@ export function SearchBar({ onSelectCalculator, initialQuery = '' }: SearchBarPr
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 z-50 flex items-center justify-center p-4"
+              className="fixed inset-0 z-50 flex items-start justify-center p-4 pt-20 md:items-center md:pt-4"
               onClick={close}
             >
               <motion.div
@@ -69,7 +69,7 @@ export function SearchBar({ onSelectCalculator, initialQuery = '' }: SearchBarPr
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95, y: -20 }}
                 transition={{ type: 'spring', stiffness: 400, damping: 30 }}
-                className="w-full max-w-lg"
+                className="w-full max-w-lg mt-0 md:mt-[-10vh]"
                 onClick={(e) => e.stopPropagation()}
               >
                 <div className="glass-strong rounded-2xl shadow-2xl overflow-hidden">

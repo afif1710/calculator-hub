@@ -9,14 +9,14 @@ const confidenceLevels = [
 
 export function SampleSizeCalculator() {
   const [population, setPopulation] = useState<number | ''>(10000);
-  const [proportion, setProportion] = useState(0.5);
-  const [margin, setMargin] = useState(0.05);
-  const [confidence, setConfidence] = useState(1.96);
+  const [proportion, setProportion] = useState('0.5');
+  const [margin, setMargin] = useState('0.05');
+  const [confidence, setConfidence] = useState('1.96');
 
   const result = useMemo(() => {
-    const p = Number(proportion);
-    const e = Number(margin);
-    const z = Number(confidence);
+    const p = parseFloat(proportion) || 0;
+    const e = parseFloat(margin) || 0;
+    const z = parseFloat(confidence) || 0;
     const N = population === '' ? Infinity : Number(population);
 
     if (p < 0 || p > 1) return { error: 'Proportion must be between 0 and 1' };
@@ -55,7 +55,7 @@ export function SampleSizeCalculator() {
           <span className="text-sm font-medium text-muted-foreground">Expected Proportion (p)</span>
           <input
             value={proportion}
-            onChange={e => setProportion(Number(e.target.value))}
+            onChange={e => setProportion(e.target.value)}
             className="input-calc"
             type="number"
             step="0.05"
@@ -68,7 +68,7 @@ export function SampleSizeCalculator() {
           <span className="text-sm font-medium text-muted-foreground">Margin of Error</span>
           <input
             value={margin}
-            onChange={e => setMargin(Number(e.target.value))}
+            onChange={e => setMargin(e.target.value)}
             className="input-calc"
             type="number"
             step="0.01"

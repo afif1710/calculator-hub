@@ -9,7 +9,7 @@ interface Expense {
 }
 
 export function ExpenseTrackerCalculator() {
-  const [income, setIncome] = useState(4000);
+  const [income, setIncome] = useState('4000');
   const [expenses, setExpenses] = useState<Expense[]>([
     { id: 1, name: 'Rent', amount: 1200, type: 'recurring' },
     { id: 2, name: 'Groceries', amount: 400, type: 'recurring' },
@@ -54,7 +54,7 @@ export function ExpenseTrackerCalculator() {
           <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
           <input
             value={income}
-            onChange={(e) => setIncome(Number(e.target.value))}
+            onChange={(e) => setIncome(e.target.value)}
             className="input-calc pl-9 text-lg font-medium text-primary"
             type="number"
             min="0"

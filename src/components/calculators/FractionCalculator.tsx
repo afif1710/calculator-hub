@@ -5,10 +5,10 @@ function gcd(a: number, b: number): number {
 }
 
 export function FractionCalculator() {
-  const [aNum, setANum] = useState(1);
-  const [aDen, setADen] = useState(2);
-  const [bNum, setBNum] = useState(1);
-  const [bDen, setBDen] = useState(3);
+  const [aNum, setANum] = useState('1');
+  const [aDen, setADen] = useState('2');
+  const [bNum, setBNum] = useState('1');
+  const [bDen, setBDen] = useState('3');
   const [op, setOp] = useState<'+' | '-' | '*' | '/'>('/');
 
   const result = useMemo(() => {
@@ -52,14 +52,14 @@ export function FractionCalculator() {
         <div className="flex flex-col items-center gap-1 p-3 rounded-xl bg-secondary/30">
           <input
             value={aNum}
-            onChange={e => setANum(Number(e.target.value))}
+            onChange={e => setANum(e.target.value)}
             className="input-calc w-20 text-center text-lg font-medium"
             type="number"
           />
           <div className="w-16 h-0.5 bg-foreground" />
           <input
             value={aDen}
-            onChange={e => setADen(Number(e.target.value))}
+            onChange={e => setADen(e.target.value)}
             className="input-calc w-20 text-center text-lg font-medium"
             type="number"
           />
@@ -86,14 +86,14 @@ export function FractionCalculator() {
         <div className="flex flex-col items-center gap-1 p-3 rounded-xl bg-secondary/30">
           <input
             value={bNum}
-            onChange={e => setBNum(Number(e.target.value))}
+            onChange={e => setBNum(e.target.value)}
             className="input-calc w-20 text-center text-lg font-medium"
             type="number"
           />
           <div className="w-16 h-0.5 bg-foreground" />
           <input
             value={bDen}
-            onChange={e => setBDen(Number(e.target.value))}
+            onChange={e => setBDen(e.target.value)}
             className="input-calc w-20 text-center text-lg font-medium"
             type="number"
           />

@@ -5,11 +5,11 @@ export function SavingsGoalCalculator() {
   const [tab, setTab] = useState<'fd' | 'rd' | 'goal'>('goal');
   
   // States suitable for all tabs
-  const [principal, setPrincipal] = useState(5000);
-  const [monthlyDeposit, setMonthlyDeposit] = useState(200);
-  const [interestRate, setInterestRate] = useState(6);
-  const [years, setYears] = useState(5);
-  const [targetGoal, setTargetGoal] = useState(20000);
+  const [principal, setPrincipal] = useState('5000');
+  const [monthlyDeposit, setMonthlyDeposit] = useState('200');
+  const [interestRate, setInterestRate] = useState('6');
+  const [years, setYears] = useState('5');
+  const [targetGoal, setTargetGoal] = useState('20000');
 
   const result = useMemo(() => {
     const P = Math.max(0, Number(principal));
@@ -69,32 +69,32 @@ export function SavingsGoalCalculator() {
           {tab === 'goal' && (
             <div className="flex flex-col gap-1.5">
               <label className="text-sm font-medium text-muted-foreground">Target Amount</label>
-              <input placeholder="e.g. 5000" value={targetGoal} onChange={(e) => setTargetGoal(Number(e.target.value))} className="input-calc font-medium text-primary" type="number" min="0" />
+              <input placeholder="e.g. 5000" value={targetGoal} onChange={(e) => setTargetGoal(e.target.value)} className="input-calc font-medium text-primary" type="number" min="0" />
             </div>
           )}
 
           {(tab === 'fd' || tab === 'goal') && (
             <div className="flex flex-col gap-1.5">
               <label className="text-sm font-medium text-muted-foreground">Initial Deposit / Principal</label>
-              <input placeholder="e.g. 5000" value={principal} onChange={(e) => setPrincipal(Number(e.target.value))} className="input-calc" type="number" min="0" />
+              <input placeholder="e.g. 5000" value={principal} onChange={(e) => setPrincipal(e.target.value)} className="input-calc" type="number" min="0" />
             </div>
           )}
 
           {(tab === 'rd' || tab === 'goal') && (
             <div className="flex flex-col gap-1.5">
               <label className="text-sm font-medium text-muted-foreground">Monthly Deposit</label>
-              <input placeholder="e.g. 12" value={monthlyDeposit} onChange={(e) => setMonthlyDeposit(Number(e.target.value))} className="input-calc" type="number" min="0" />
+              <input placeholder="e.g. 12" value={monthlyDeposit} onChange={(e) => setMonthlyDeposit(e.target.value)} className="input-calc" type="number" min="0" />
             </div>
           )}
 
           <div className="grid grid-cols-2 gap-3">
             <div className="flex flex-col gap-1.5">
               <label className="text-sm font-medium text-muted-foreground">Interest Rate (%)</label>
-              <input placeholder="e.g. 5.5" value={interestRate} onChange={(e) => setInterestRate(Number(e.target.value))} className="input-calc" type="number" step="0.1" min="0" />
+              <input placeholder="e.g. 5.5" value={interestRate} onChange={(e) => setInterestRate(e.target.value)} className="input-calc" type="number" step="0.1" min="0" />
             </div>
             <div className="flex flex-col gap-1.5">
               <label className="text-sm font-medium text-muted-foreground">Time (Years)</label>
-              <input placeholder="e.g. 5.5" value={years} onChange={(e) => setYears(Number(e.target.value))} className="input-calc" type="number" min="0.1" step="0.5" />
+              <input placeholder="e.g. 5.5" value={years} onChange={(e) => setYears(e.target.value)} className="input-calc" type="number" min="0.1" step="0.5" />
             </div>
           </div>
         </div>

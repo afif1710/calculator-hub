@@ -2,10 +2,10 @@ import { useState, useMemo } from 'react';
 import { PieChart, DollarSign, Wallet, AlertTriangle, CheckCircle2 } from 'lucide-react';
 
 export function BudgetPlannerCalculator() {
-  const [income, setIncome] = useState(5000);
-  const [fixedExpenses, setFixedExpenses] = useState(2500);
-  const [variableExpenses, setVariableExpenses] = useState(1200);
-  const [savingsGoal, setSavingsGoal] = useState(800);
+  const [income, setIncome] = useState('5000');
+  const [fixedExpenses, setFixedExpenses] = useState('2500');
+  const [variableExpenses, setVariableExpenses] = useState('1200');
+  const [savingsGoal, setSavingsGoal] = useState('800');
 
   const result = useMemo(() => {
     const inc = Math.max(0, Number(income));
@@ -36,7 +36,7 @@ export function BudgetPlannerCalculator() {
               <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
               <input
                 value={income}
-                onChange={(e) => setIncome(Number(e.target.value))}
+                onChange={(e) => setIncome(e.target.value)}
                 className="input-calc pl-9 text-lg font-medium text-primary"
                 type="number"
                 min="0"
@@ -50,7 +50,7 @@ export function BudgetPlannerCalculator() {
               <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
               <input
                 value={fixedExpenses}
-                onChange={(e) => setFixedExpenses(Number(e.target.value))}
+                onChange={(e) => setFixedExpenses(e.target.value)}
                 className="input-calc pl-9"
                 type="number"
                 min="0"
@@ -64,7 +64,7 @@ export function BudgetPlannerCalculator() {
               <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
               <input
                 value={variableExpenses}
-                onChange={(e) => setVariableExpenses(Number(e.target.value))}
+                onChange={(e) => setVariableExpenses(e.target.value)}
                 className="input-calc pl-9"
                 type="number"
                 min="0"
@@ -78,7 +78,7 @@ export function BudgetPlannerCalculator() {
               <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
               <input
                 value={savingsGoal}
-                onChange={(e) => setSavingsGoal(Number(e.target.value))}
+                onChange={(e) => setSavingsGoal(e.target.value)}
                 className="input-calc pl-9"
                 type="number"
                 min="0"

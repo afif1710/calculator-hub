@@ -2,16 +2,16 @@ import { useState, useMemo } from 'react';
 import { Camera } from 'lucide-react';
 
 export function DOFCalculator() {
-  const [focal, setFocal] = useState(50);
-  const [aperture, setAperture] = useState(1.8);
-  const [distance, setDistance] = useState(5);
-  const [coc, setCoc] = useState(0.029);
+  const [focal, setFocal] = useState('50');
+  const [aperture, setAperture] = useState('1.8');
+  const [distance, setDistance] = useState('5');
+  const [coc, setCoc] = useState('0.029');
 
   const result = useMemo(() => {
-    const f = Number(focal);
-    const N = Number(aperture);
-    const D = Number(distance);
-    const c = Number(coc);
+    const f = parseFloat(focal) || 0;
+    const N = parseFloat(aperture) || 0;
+    const D = parseFloat(distance) || 0;
+    const c = parseFloat(coc) || 0;
 
     if (f <= 0 || N <= 0 || D <= 0 || c <= 0) {
       return { error: 'All values must be positive' };
@@ -49,7 +49,7 @@ export function DOFCalculator() {
           <span className="text-sm font-medium text-muted-foreground">Focal Length (mm)</span>
           <input
             value={focal}
-            onChange={e => setFocal(Number(e.target.value))}
+            onChange={e => setFocal(e.target.value)}
             className="input-calc"
             type="number"
             min="1"
@@ -59,7 +59,7 @@ export function DOFCalculator() {
           <span className="text-sm font-medium text-muted-foreground">Aperture (f/)</span>
           <input
             value={aperture}
-            onChange={e => setAperture(Number(e.target.value))}
+            onChange={e => setAperture(e.target.value)}
             className="input-calc"
             type="number"
             step="0.1"
@@ -70,7 +70,7 @@ export function DOFCalculator() {
           <span className="text-sm font-medium text-muted-foreground">Subject Distance (m)</span>
           <input
             value={distance}
-            onChange={e => setDistance(Number(e.target.value))}
+            onChange={e => setDistance(e.target.value)}
             className="input-calc"
             type="number"
             step="0.1"
@@ -81,7 +81,7 @@ export function DOFCalculator() {
           <span className="text-sm font-medium text-muted-foreground">Circle of Confusion (mm)</span>
           <select
             value={coc}
-            onChange={e => setCoc(Number(e.target.value))}
+            onChange={e => setCoc(e.target.value)}
             className="input-calc"
           >
             <option value={0.029}>Full Frame (0.029mm)</option>

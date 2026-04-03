@@ -2,9 +2,9 @@ import { useState, useMemo } from 'react';
 import { Receipt, Percent, Calculator as CalcIcon } from 'lucide-react';
 
 export function SalesTaxCalculator() {
-  const [amount, setAmount] = useState(100);
-  const [taxRate, setTaxRate] = useState(5);
-  const [quantity, setQuantity] = useState(1);
+  const [amount, setAmount] = useState('100');
+  const [taxRate, setTaxRate] = useState('5');
+  const [quantity, setQuantity] = useState('1');
   const [mode, setMode] = useState<'add' | 'extract'>('add');
 
   const result = useMemo(() => {
@@ -61,7 +61,7 @@ export function SalesTaxCalculator() {
             <span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground">$</span>
             <input
               value={amount}
-              onChange={(e) => setAmount(Number(e.target.value))}
+              onChange={(e) => setAmount(e.target.value)}
               className="input-calc pl-8"
               type="number"
               min="0"
@@ -76,7 +76,7 @@ export function SalesTaxCalculator() {
             <span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground">×</span>
             <input
               value={quantity}
-              onChange={(e) => setQuantity(Number(e.target.value))}
+              onChange={(e) => setQuantity(e.target.value)}
               className="input-calc pl-8"
               type="number"
               min="1"
@@ -91,7 +91,7 @@ export function SalesTaxCalculator() {
           <Percent className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
           <input
             value={taxRate}
-            onChange={(e) => setTaxRate(Number(e.target.value))}
+            onChange={(e) => setTaxRate(e.target.value)}
             className="input-calc pl-10"
             type="number"
             min="0"

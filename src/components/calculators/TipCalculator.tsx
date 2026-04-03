@@ -2,13 +2,13 @@ import { useState, useMemo } from 'react';
 import { Receipt, Users } from 'lucide-react';
 
 export function TipCalculator() {
-  const [bill, setBill] = useState(85.50);
-  const [tipPercent, setTipPercent] = useState(18);
-  const [people, setPeople] = useState(2);
+  const [bill, setBill] = useState('85.50');
+  const [tipPercent, setTipPercent] = useState('18');
+  const [people, setPeople] = useState('2');
 
   const result = useMemo(() => {
-    const b = Number(bill);
-    const t = Number(tipPercent);
+    const b = parseFloat(bill) || 0;
+    const t = parseFloat(tipPercent) || 0;
     const p = Math.max(1, Number(people));
 
     const tip = b * (t / 100);
@@ -29,8 +29,8 @@ export function TipCalculator() {
           <span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground">$</span>
           <input
             value={bill}
-            onChange={e => setBill(Number(e.target.value))}
-            className="input-calc pl-8"
+            onChange={e => setBill(e.target.value)}
+            className="input-calc pl-10"
             type="number"
             min="0"
             step="0.01"
@@ -44,9 +44,9 @@ export function TipCalculator() {
           {presets.map(p => (
             <button
               key={p}
-              onClick={() => setTipPercent(p)}
+              onClick={() => setTipPercent(p.toString())}
               className={`flex-1 py-2 rounded-lg text-sm font-medium transition-all ${
-                tipPercent === p
+                Number(tipPercent) === p
                   ? 'bg-primary text-primary-foreground'
                   : 'bg-secondary text-muted-foreground hover:bg-secondary/80'
               }`}
@@ -56,7 +56,7 @@ export function TipCalculator() {
           ))}
           <input
             value={tipPercent}
-            onChange={e => setTipPercent(Number(e.target.value))}
+            onChange={e => setTipPercent(e.target.value)}
             className="input-calc w-20 text-center"
             type="number"
             min="0"
@@ -68,18 +68,18 @@ export function TipCalculator() {
         <span className="text-sm font-medium text-muted-foreground">Split Between</span>
         <div className="flex items-center gap-3">
           <button
-            onClick={() => setPeople(p => Math.max(1, p - 1))}
+            onClick={() => setPeople(curr => (Math.max(1, (parseInt(curr) || 1) - 1)).toString())}
             className="w-10 h-10 rounded-lg bg-secondary text-foreground font-bold hover:bg-secondary/80"
           >
             −
           </button>
           <div className="flex-1 flex items-center justify-center gap-2">
             <Users className="w-5 h-5 text-muted-foreground" />
-            <span className="text-2xl font-bold">{people}</span>
+            <span className="text-2xl font-bold">{people || '1'}</span>
             <span className="text-muted-foreground">people</span>
           </div>
           <button
-            onClick={() => setPeople(p => p + 1)}
+            onClick={() => setPeople(curr => ((parseInt(curr) || 1) + 1).toString())}
             className="w-10 h-10 rounded-lg bg-secondary text-foreground font-bold hover:bg-secondary/80"
           >
             +
@@ -99,7 +99,7 @@ export function TipCalculator() {
           </div>
         </div>
 
-        {people > 1 && (
+        {(parseInt(people) || 1) > 1 && (
           <div className="pt-4 border-t border-border">
             <div className="flex items-center gap-3">
               <Receipt className="w-5 h-5 text-primary" />

@@ -2,9 +2,9 @@ import { useState, useMemo } from 'react';
 import { Home, Percent, DollarSign, PieChart } from 'lucide-react';
 
 export function DownPaymentCalculator() {
-  const [homePrice, setHomePrice] = useState(300000);
-  const [downPercent, setDownPercent] = useState(20);
-  const [downAmount, setDownAmount] = useState(60000);
+  const [homePrice, setHomePrice] = useState('300000');
+  const [downPercent, setDownPercent] = useState('20');
+  const [downAmount, setDownAmount] = useState('60000');
   const [lastEdited, setLastEdited] = useState<'percent' | 'amount'>('percent');
 
   // Handle cross calculations instantly

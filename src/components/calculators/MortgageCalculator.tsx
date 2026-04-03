@@ -6,15 +6,15 @@ function formatNum(n: number) {
 }
 
 export function MortgageCalculator() {
-  const [principal, setPrincipal] = useState(300000);
-  const [annualRate, setAnnualRate] = useState(7.5);
-  const [years, setYears] = useState(20);
-  const [extraMonthly, setExtraMonthly] = useState(0);
+  const [principal, setPrincipal] = useState('300000');
+  const [annualRate, setAnnualRate] = useState('7.5');
+  const [years, setYears] = useState('20');
+  const [extraMonthly, setExtraMonthly] = useState('0');
 
   const result = useMemo(() => {
-    const P = Number(principal);
-    const r = Number(annualRate) / 100 / 12;
-    const n = Number(years) * 12;
+    const P = parseFloat(principal) || 0;
+    const r = parseFloat(annualRate) || 0 / 100 / 12;
+    const n = parseFloat(years) || 0 * 12;
     
     if (r === 0) {
       const emi = P / n;
@@ -70,7 +70,7 @@ export function MortgageCalculator() {
           <span className="text-sm font-medium text-muted-foreground">Loan Amount ($)</span>
           <input
             value={principal}
-            onChange={e => setPrincipal(Number(e.target.value))}
+            onChange={e => setPrincipal(e.target.value)}
             className="input-calc"
             type="number"
             min="0"
@@ -80,7 +80,7 @@ export function MortgageCalculator() {
           <span className="text-sm font-medium text-muted-foreground">Annual Rate (%)</span>
           <input
             value={annualRate}
-            onChange={e => setAnnualRate(Number(e.target.value))}
+            onChange={e => setAnnualRate(e.target.value)}
             className="input-calc"
             type="number"
             step="0.01"
@@ -91,7 +91,7 @@ export function MortgageCalculator() {
           <span className="text-sm font-medium text-muted-foreground">Term (years)</span>
           <input
             value={years}
-            onChange={e => setYears(Number(e.target.value))}
+            onChange={e => setYears(e.target.value)}
             className="input-calc"
             type="number"
             min="1"
@@ -101,7 +101,7 @@ export function MortgageCalculator() {
           <span className="text-sm font-medium text-muted-foreground">Extra Monthly Payment</span>
           <input
             value={extraMonthly}
-            onChange={e => setExtraMonthly(Number(e.target.value))}
+            onChange={e => setExtraMonthly(e.target.value)}
             className="input-calc"
             type="number"
             min="0"

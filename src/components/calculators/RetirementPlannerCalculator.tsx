@@ -2,12 +2,12 @@ import { useState, useMemo } from 'react';
 import { Palmtree, ArrowRight, ShieldCheck, AlertCircle } from 'lucide-react';
 
 export function RetirementPlannerCalculator() {
-  const [currentAge, setCurrentAge] = useState(30);
-  const [retirementAge, setRetirementAge] = useState(65);
-  const [currentSavings, setCurrentSavings] = useState(50000);
-  const [monthlyContribution, setMonthlyContribution] = useState(1000);
-  const [returnRate, setReturnRate] = useState(7);
-  const [targetCorpus, setTargetCorpus] = useState(1500000);
+  const [currentAge, setCurrentAge] = useState('30');
+  const [retirementAge, setRetirementAge] = useState('65');
+  const [currentSavings, setCurrentSavings] = useState('50000');
+  const [monthlyContribution, setMonthlyContribution] = useState('1000');
+  const [returnRate, setReturnRate] = useState('7');
+  const [targetCorpus, setTargetCorpus] = useState('1500000');
 
   const result = useMemo(() => {
     const ageNow = Math.max(1, Number(currentAge));
@@ -46,32 +46,32 @@ export function RetirementPlannerCalculator() {
           <div className="grid grid-cols-2 gap-3">
             <div className="flex flex-col gap-1.5">
               <label className="text-xs font-medium text-muted-foreground">Current Age</label>
-              <input placeholder="e.g. 12" value={currentAge} onChange={(e) => setCurrentAge(Number(e.target.value))} className="input-calc py-2 text-sm" type="number" min="1" max="100" />
+              <input placeholder="e.g. 12" value={currentAge} onChange={(e) => setCurrentAge(e.target.value)} className="input-calc py-2 text-sm" type="number" min="1" max="100" />
             </div>
             <div className="flex flex-col gap-1.5">
               <label className="text-xs font-medium text-muted-foreground">Retirement Age</label>
-              <input placeholder="e.g. 12" value={retirementAge} onChange={(e) => setRetirementAge(Number(e.target.value))} className="input-calc py-2 text-sm" type="number" min={currentAge + 1} max="120" />
+              <input placeholder="e.g. 12" value={retirementAge} onChange={(e) => setRetirementAge(e.target.value)} className="input-calc py-2 text-sm" type="number" min={currentAge + 1} max="120" />
             </div>
           </div>
 
           <div className="flex flex-col gap-1.5">
             <label className="text-xs font-medium text-muted-foreground">Target Retirement Corpus</label>
-            <input placeholder="e.g. 5000" value={targetCorpus} onChange={(e) => setTargetCorpus(Number(e.target.value))} className="input-calc py-2 text-sm" type="number" min="0" step="10000" />
+            <input placeholder="e.g. 5000" value={targetCorpus} onChange={(e) => setTargetCorpus(e.target.value)} className="input-calc py-2 text-sm" type="number" min="0" step="10000" />
           </div>
 
           <div className="flex flex-col gap-1.5">
             <label className="text-xs font-medium text-muted-foreground">Current Savings</label>
-            <input placeholder="e.g. 5000" value={currentSavings} onChange={(e) => setCurrentSavings(Number(e.target.value))} className="input-calc py-2 text-sm" type="number" min="0" step="1000" />
+            <input placeholder="e.g. 5000" value={currentSavings} onChange={(e) => setCurrentSavings(e.target.value)} className="input-calc py-2 text-sm" type="number" min="0" step="1000" />
           </div>
 
           <div className="grid grid-cols-2 gap-3">
             <div className="flex flex-col gap-1.5">
               <label className="text-xs font-medium text-muted-foreground">Monthly Adding</label>
-              <input placeholder="e.g. 12" value={monthlyContribution} onChange={(e) => setMonthlyContribution(Number(e.target.value))} className="input-calc py-2 text-sm" type="number" min="0" step="100" />
+              <input placeholder="e.g. 12" value={monthlyContribution} onChange={(e) => setMonthlyContribution(e.target.value)} className="input-calc py-2 text-sm" type="number" min="0" step="100" />
             </div>
             <div className="flex flex-col gap-1.5">
               <label className="text-xs font-medium text-muted-foreground">Return Rate (%)</label>
-              <input placeholder="e.g. 5.5" value={returnRate} onChange={(e) => setReturnRate(Number(e.target.value))} className="input-calc py-2 text-sm" type="number" min="0" step="0.5" />
+              <input placeholder="e.g. 5.5" value={returnRate} onChange={(e) => setReturnRate(e.target.value)} className="input-calc py-2 text-sm" type="number" min="0" step="0.5" />
             </div>
           </div>
         </div>

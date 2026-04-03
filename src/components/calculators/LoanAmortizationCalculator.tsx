@@ -2,10 +2,10 @@ import { useState, useMemo } from 'react';
 import { Landmark, CalendarDays, TrendingDown } from 'lucide-react';
 
 export function LoanAmortizationCalculator() {
-  const [principal, setPrincipal] = useState(250000);
-  const [rate, setRate] = useState(5.5);
-  const [years, setYears] = useState(30);
-  const [extraPayment, setExtraPayment] = useState(0);
+  const [principal, setPrincipal] = useState('250000');
+  const [rate, setRate] = useState('5.5');
+  const [years, setYears] = useState('30');
+  const [extraPayment, setExtraPayment] = useState('0');
 
   const result = useMemo(() => {
     const p = Math.max(0, Number(principal));
@@ -62,21 +62,21 @@ export function LoanAmortizationCalculator() {
         <div className="space-y-4">
           <div className="flex flex-col gap-1.5">
             <label className="text-sm font-medium text-muted-foreground">Loan Amount</label>
-            <input placeholder="e.g. 5000" value={principal} onChange={(e) => setPrincipal(Number(e.target.value))} className="input-calc" type="number" min="0" />
+            <input placeholder="e.g. 5000" value={principal} onChange={(e) => setPrincipal(e.target.value)} className="input-calc" type="number" min="0" />
           </div>
           <div className="grid grid-cols-2 gap-3">
             <div className="flex flex-col gap-1.5">
               <label className="text-sm font-medium text-muted-foreground">Interest Rate (%)</label>
-              <input placeholder="e.g. 5.5" value={rate} onChange={(e) => setRate(Number(e.target.value))} className="input-calc" type="number" step="0.1" min="0" />
+              <input placeholder="e.g. 5.5" value={rate} onChange={(e) => setRate(e.target.value)} className="input-calc" type="number" step="0.1" min="0" />
             </div>
             <div className="flex flex-col gap-1.5">
               <label className="text-sm font-medium text-muted-foreground">Term (Years)</label>
-              <input placeholder="e.g. 5.5" value={years} onChange={(e) => setYears(Number(e.target.value))} className="input-calc" type="number" min="1" />
+              <input placeholder="e.g. 5.5" value={years} onChange={(e) => setYears(e.target.value)} className="input-calc" type="number" min="1" />
             </div>
           </div>
           <div className="flex flex-col gap-1.5 pt-2 border-t border-border">
             <label className="text-sm font-medium text-muted-foreground">Optional Extra Monthly Payment</label>
-            <input placeholder="e.g. 12" value={extraPayment} onChange={(e) => setExtraPayment(Number(e.target.value))} className="input-calc" type="number" min="0" />
+            <input placeholder="e.g. 12" value={extraPayment} onChange={(e) => setExtraPayment(e.target.value)} className="input-calc" type="number" min="0" />
           </div>
         </div>
 

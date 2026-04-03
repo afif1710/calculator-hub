@@ -54,7 +54,7 @@ export function UnitConverter() {
   const [unitType, setUnitType] = useState<UnitType>('length');
   const [fromUnit, setFromUnit] = useState('m');
   const [toUnit, setToUnit] = useState('ft');
-  const [value, setValue] = useState(1);
+  const [value, setValue] = useState('1');
 
   const currentUnits = units[unitType].units;
 
@@ -101,7 +101,7 @@ export function UnitConverter() {
           <span className="text-sm font-medium text-muted-foreground">From</span>
           <input
             value={value}
-            onChange={e => setValue(Number(e.target.value))}
+            onChange={e => setValue(e.target.value)}
             className="input-calc"
             type="number"
           />

@@ -27,17 +27,17 @@ function getBMIClassification(bmi: number): { classification: string; color: str
 }
 
 export function BMICalculator() {
-  const [weight, setWeight] = useState(70);
-  const [height, setHeight] = useState(175);
-  const [age, setAge] = useState(30);
+  const [weight, setWeight] = useState('70');
+  const [height, setHeight] = useState('175');
+  const [age, setAge] = useState('30');
   const [sex, setSex] = useState<'male' | 'female'>('male');
-  const [activity, setActivity] = useState(1.55);
+  const [activity, setActivity] = useState('1.55');
 
   const result: BMIResult = useMemo(() => {
-    const w = Number(weight);
-    const h = Number(height);
-    const a = Number(age);
-    const act = Number(activity);
+    const w = parseFloat(weight) || 0;
+    const h = parseFloat(height) || 0;
+    const a = parseFloat(age) || 0;
+    const act = parseFloat(activity) || 0;
 
     const bmi = w / Math.pow(h / 100, 2);
     const { classification, color } = getBMIClassification(bmi);
@@ -64,7 +64,7 @@ export function BMICalculator() {
           <span className="text-sm font-medium text-muted-foreground">Weight (kg)</span>
           <input
             value={weight}
-            onChange={e => setWeight(Number(e.target.value))}
+            onChange={e => setWeight(e.target.value)}
             className="input-calc"
             type="number"
             min="1"
@@ -74,7 +74,7 @@ export function BMICalculator() {
           <span className="text-sm font-medium text-muted-foreground">Height (cm)</span>
           <input
             value={height}
-            onChange={e => setHeight(Number(e.target.value))}
+            onChange={e => setHeight(e.target.value)}
             className="input-calc"
             type="number"
             min="1"
@@ -84,7 +84,7 @@ export function BMICalculator() {
           <span className="text-sm font-medium text-muted-foreground">Age</span>
           <input
             value={age}
-            onChange={e => setAge(Number(e.target.value))}
+            onChange={e => setAge(e.target.value)}
             className="input-calc"
             type="number"
             min="1"
@@ -108,7 +108,7 @@ export function BMICalculator() {
           <span className="text-sm font-medium text-muted-foreground">Activity Level</span>
           <select
             value={activity}
-            onChange={e => setActivity(Number(e.target.value))}
+            onChange={e => setActivity(e.target.value)}
             className="input-calc"
           >
             {activityLevels.map(level => (

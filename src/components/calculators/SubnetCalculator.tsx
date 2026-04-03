@@ -27,7 +27,7 @@ export function SubnetCalculator() {
   const result = useMemo(() => {
     try {
       const [ip, suffix] = cidr.split('/');
-      const prefixLength = Number(suffix);
+      const prefixLength = parseFloat(suffix) || 0;
       
       if (!ip || Number.isNaN(prefixLength) || prefixLength < 0 || prefixLength > 32) {
         return { error: 'Invalid CIDR notation (e.g., 192.168.1.0/24)' };
